@@ -1,0 +1,46 @@
+<%= tag.div class: 'row' do %>
+  <%= tag.div class: 'col-xl-4' do %>
+    <%= tag.div class: 'card mb-4' do %>
+      <%= tag.div class: 'card-body' do %>
+        <%= tag.h4 class: 'fs-base fw-semibold mb-0' do %>
+          <%= link_to dashboard_path, class: 'link d-flex align-items-center fw-semibold' do %>
+            <i class="uil uil-arrow-left"></i>
+            <%= tag.span class: 'ms-2 text-truncate' do %>
+              Назад
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'col-xl-8' do %>
+    <%= tag.div class: 'card mb-4' do %>
+      <%= tag.div class: 'card-body' do %>
+        <h1 class="h6 mb-0 fs-base fw-semibold">
+          Мои товарищества
+        </h1>
+      <% end %>
+      <%= tag.div class: 'card-footer' do %>
+        <%= tag.ul class: 'nav nav-tabs w-100 mb-0' do %>
+          <%= tag.li class: 'nav-item w-100' do %>
+            <%= link_to new_company_path, class: 'nav-link w-100 fw-semibold d-flex align-items-center justify-content-center fw-semibold' do %>
+              <%= tag.i class: 'uil uil-plus fs-lg' %>
+              <%= tag.span class: 'ms-2 text-truncate' do %>
+                Создать
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if @companies.count > 0 %>
+      <%= tag.div id: 'companies' do %>
+        <% @companies.each do |company| %>
+          <%= render company %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= render 'no_data' %>
+    <% end %>
+  <% end %>
+<% end %>

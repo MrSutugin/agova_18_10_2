@@ -1,0 +1,37 @@
+<%= form_with(model: company) do |form| %>
+  <%= tag.div class: 'card-body' do %>
+    <%= tag.h1 form_title, class: 'h6 mb-3 fs-base fw-semibold' %>
+    <%= tag.div class: 'mb-4' do %>
+      <%= form.label :name, 'Название', class: 'form-label' %>
+      <%= form.text_field :name, class: "form-control #{'is-invalid' if company.errors.include?(:name)}" %>
+      <%= content_tag(:span, company.errors.messages_for(:name).join, class: 'invalid-feedback_form') if company.errors.include?(:name) %>
+    <% end %>
+    <%= tag.div class: 'mb-4' do %>
+      <%= form.label :inn, 'ИНН', class: 'form-label' %>
+      <%= form.text_field :inn, class: "form-control #{'is-invalid' if company.errors.include?(:inn)}" %>
+      <%= content_tag(:span, company.errors.messages_for(:inn).join, class: 'invalid-feedback_form') if company.errors.include?(:inn) %>
+    <% end %>
+    <%= tag.div class: 'mb-4' do %>
+      <%= form.label :address, 'Адрес', class: 'form-label' %>
+      <%= form.text_field :address, class: "form-control #{'is-invalid' if company.errors.include?(:address)}" %>
+      <%= content_tag(:span, company.errors.messages_for(:address).join, class: 'invalid-feedback_form') if company.errors.include?(:address) %>
+    <% end %>
+    <%= tag.div class: '' do %>
+      <%= form.label :bio, 'Описане', class: 'form-label' %>
+      <%= form.text_area :bio, class: "form-control #{'is-invalid' if company.errors.include?(:bio)}" %>
+      <%= content_tag(:span, company.errors.messages_for(:bio).join, class: 'invalid-feedback_form') if company.errors.include?(:bio) %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'card-footer' do %>
+    <%= tag.ul class: 'nav nav-tabs w-100 mb-0' do %>
+      <%= tag.li class: 'nav-item w-100' do %>
+        <%= tag.button type:'subbmit', class: 'nav-link w-100 fw-semibold d-flex align-items-center justify-content-center fw-semibold' do %>
+          <%= tag.i class: 'uil uil-save fs-lg' %>
+          <%= tag.span class: 'ms-2 text-truncate' do %>
+            Сохранить
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<%= tag.div class: 'fw-normal' do %>
+  <%= link_to edit_company_path(@company), class: 'card-nav-link text-truncate fw-semibold', title: 'Мои товарищества' do %>
+    <%= tag.i class: 'uil uil-setting' %>
+    <%= tag.span class: 'ms-2' do %>
+      Настройки товарищества
+    <% end %>
+  <% end %>
+<% end %>

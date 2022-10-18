@@ -1,0 +1,16 @@
+<%= tag.div class: 'fw-normal' do %>
+  <%= link_to edit_profile_path(current_account.profile), class: 'card-nav-link text-truncate fw-semibold', title: 'Редактирование профиля' do %>
+    <%= tag.i class: 'uil uil-user' %>
+    <%= tag.span class: 'ms-2' do %>
+      Настройки профиля
+    <% end %>
+  <% end %>
+<% end %>
+<%= tag.div class: 'fw-normal' do %>
+  <%= link_to secret_key_path, class: 'card-nav-link text-truncate fw-semibold pb-0', title: 'Редактирование профиля' do %>
+    <%= tag.i class: 'uil uil-key-skeleton' %>
+    <%= tag.span class: 'ms-2' do %>
+      Секретный ключ
+    <% end %>
+  <% end %>
+<% end %>

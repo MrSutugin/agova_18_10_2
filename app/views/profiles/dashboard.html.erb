@@ -1,0 +1,76 @@
+<%= tag.div class: 'row' do %>
+  <%= tag.div class: 'col-xl-4' do %>
+    <%= tag.div class: 'card mb-4' do %>
+      <%= tag.div class: 'card-body' do %>
+        <%= tag.h4 class: 'fs-base fw-semibold mb-3' do %>
+          <%= link_to root_path, class: 'link d-flex align-items-center fw-semibold' do %>
+            <%= tag.i class: 'uil uil-arrow-left' %>
+            <%= tag.span class: 'ms-2 text-truncate' do %>
+              На главную
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= tag.div class: 'fw-normal' do %>
+          <%= link_to companies_path, class: 'card-nav-link text-truncate fw-semibold', title: 'Мои товарищества' do %>
+            <%= tag.i class: 'uil uil-house-user' %>
+            <%= tag.span class: 'ms-2' do %>
+              Мои товарищества
+            <% end %>
+          <% end %>
+          <%= link_to edit_profile_path(current_account.profile), class: 'card-nav-link text-truncate fw-semibold pb-0', title: 'Настройки профиля' do %>
+            <%= tag.i class: 'uil uil-setting' %>
+            <%= tag.span class: 'ms-2' do %>
+              Настройки профиля
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <%= tag.div class: 'card-footer' do %>
+        <%= tag.ul class: 'nav nav-tabs w-100 mb-0' do %>
+          <%= tag.li class: 'nav-item w-100' do %>
+            <%= link_to rodauth.logout_path, class: 'nav-link w-100 fw-semibold d-flex align-items-center justify-content-center fw-semibold' do %>
+              <%= tag.i class: 'uil uil-signout fs-lg' %>
+              <%= tag.span class: 'ms-2 text-truncate' do %>
+                Выйти
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'col-xl-8' do %>
+    <%= tag.div class: 'card mb-4' do %>
+      <%= tag.div class: 'card-body' do %>
+        <%= tag.div class: 'account-status' do %>
+          <%= tag.div class: 'btn-group btn-group-sm' do %>
+            <%= tag.div class: 'btn-xs  btn-account d-flex align-items-center fw-semibold' do %>
+              <%= tag.i class: 'uil uil-star' %>
+              <%= tag.span class: 'ms-2 text-truncate' do %>
+                0.0
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= tag.div class: 'd-flex align-items-center' do %>
+          <%= tag.div class: 'position-relative flex-shrink-0' do %>
+            <%= image_tag 'no_avatar', class: 'rounded-circle border', width: '100' %>
+          <% end %>
+          <%= tag.div class: 'ps-4 text-truncate' do %>
+            <%= tag.h1 class: 'h6 mb-0 fs-base fw-semibold' do %>
+              <%= current_account.profile.first_name %>
+              <%= current_account.profile.last_name %>
+            <% end %>
+            <%= tag.div clas: 'd-flex align-items-center fw-semibold fs-sm' do %>
+              <%= tag.i class: 'uil uil-at' %>
+              <%= tag.span class: 'text-truncate' do %>
+                <%= current_account.profile.slug %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= render 'no_data' %>
+  <% end %>
+<% end %>

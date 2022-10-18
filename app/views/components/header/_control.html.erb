@@ -1,0 +1,9 @@
+<% if rodauth.logged_in? %>
+  <%= link_to dashboard_path, class: 'btn btn-secondary btn-icon ms-4' do %>
+    <%= tag.i class: 'uil uil-user fs-lg' %>
+  <% end %>
+<% else %>
+  <%= link_to rodauth.login_path, class: 'btn btn-secondary btn-icon ms-4' do %>
+    <%= tag.i class: 'uil uil-signin' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<%= tag.html lang: 'ru' do %>
+  <%= tag.head do %>
+    <%= tag.meta charset: 'utf-8' %>
+    <%= tag.title @page_title || 'Default title' %>
+    <%= tag.meta name: 'description', content: @page_description || 'Default title' %>
+    <%= tag.meta name: 'viewport', content: 'width=device-width,initial-scale=1' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'css/main', 'data-turbo-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <% end %>
+  <%= tag.body class: 'fixed-bottom-btn' do %>
+    <%# Header %>
+    <%= tag.header class: 'my-4 pb-4' do %>
+      <%= tag.div class: 'container' do %>
+        <%= tag.div class: 'row  align-items-center'  do %>
+          <%= tag.div class: 'd-none d-xl-block col-xl-3' do %>
+            <%= link_to root_path do %>
+              <%= render 'components/header/logo' %>
+            <% end %>
+          <% end %>
+          <%= tag.div class: 'clo-12 col-xl-6', id: '' do %>
+            <%= tag.div class: ''  do %>
+              <%= render 'components/header/search' %>
+            <% end %>
+          <% end %>
+          <%= tag.div class: 'd-none d-xl-block col-xl-3' do %>
+            <%= tag.div class: 'd-flex justify-content-end'  do %>
+              <%= render 'components/header/control' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%# ---------------- %>
+    <%# Main %>
+    <%= tag.main class: 'h-100' do %>
+      <%= tag.div class: 'container' do %>
+        <%= render 'components/notifications/flash' %>
+        <%= yield %>
+      <% end %>
+    <% end %>
+    <%# ---------------- %>
+    <%# Mobil btn %>
+    <%= tag.div class: 'fixed-bottom d-lg-none' do %>
+      <%= tag.div class: 'container' do %>
+        Тут кнопки
+      <% end %>
+    <% end %>
+    <%# ---------------- %>
+  <% end %>
+  <%= javascript_include_tag 'javascript/bootstrap/dist/js/bootstrap.bundle.min.js' %>
+  <%= javascript_include_tag 'javascript/simplebar/dist/simplebar.min.js' %>
+  <%= javascript_include_tag 'javascript/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %>
+  <%= javascript_include_tag 'javascript/smooth-scroll/dist/smooth-scroll.polyfills.min.js' %>
+  <%= javascript_include_tag 'javascript/leaflet/dist/leaflet.js' %>
+  <%= javascript_include_tag 'javascript/nouislider/dist/nouislider.min.js' %>
+  <%= javascript_include_tag 'javascript/main.js' %>
+<% end %>

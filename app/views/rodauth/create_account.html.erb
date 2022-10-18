@@ -1,0 +1,49 @@
+<%= form_with url: rodauth.create_account_path, method: :post, data: { turbo: false } do |form| %>
+  <%= tag.div class: 'row' do %>
+    <%= tag.div class: 'col-xl-6' do %>
+      <%= tag.div class: 'mb-4' do %>
+        <%= form.label :first_name, 'Ваше имя', class: 'form-label' %>
+        <%= form.text_field :first_name, value: params[:first_name], class: "form-control #{'is-invalid' if rodauth.field_error('first_name')}", aria: ({ invalid: true, describedby: 'login_error_message' } if rodauth.field_error('first_name')) %>
+        <%= content_tag(:span, rodauth.field_error('first_name'), class: 'invalid-feedback', id: 'first_name_error_message') if rodauth.field_error('first_name') %>
+      <% end %>
+    <% end %>
+    <%= tag.div class: 'col-xl-6' do %>
+      <%= tag.div class: 'mb-4' do %>
+        <%= form.label :last_name, 'Фамилия', class: 'form-label' %>
+        <%= form.text_field :last_name, value: params[:last_name], class: "form-control #{'is-invalid' if rodauth.field_error('last_name')}", aria: ({ invalid: true, describedby: 'login_error_message' } if rodauth.field_error('last_name')) %>
+        <%= content_tag(:span, rodauth.field_error('last_name'), class: 'invalid-feedback', id: 'last_name_error_message') if rodauth.field_error('last_name') %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'mb-4' do %>
+    <%= form.label rodauth.login_label, 'Email', class: 'form-label' %>
+    <%= form.email_field rodauth.login_param, value: params[rodauth.login_param], id: 'login', autocomplete: 'email', required: true, class: "form-control #{'is-invalid' if rodauth.field_error(rodauth.login_param)}", aria: ({ invalid: true, describedby: 'login_error_message' } if rodauth.field_error(rodauth.login_param)) %>
+    <%= content_tag(:span, rodauth.field_error(rodauth.login_param), class: 'invalid-feedback', id: 'login_error_message') if rodauth.field_error(rodauth.login_param) %>
+  <% end %>
+  <% if rodauth.require_login_confirmation? %>
+    <%= tag.div class: 'mb-4' do %>
+    <% end %>
+    <div class='mb-4'>
+      <%= form.label rodauth.login_confirm_label, 'Подтвердите email', class: 'form-label' %>
+      <%= form.email_field rodauth.login_confirm_param, value: params[rodauth.login_confirm_param], id: 'login-confirm', autocomplete: 'email', required: true, class: "form-control #{'is-invalid' if rodauth.field_error(rodauth.login_confirm_param)}", aria: ({ invalid: true, describedby: 'login-confirm_error_message' } if rodauth.field_error(rodauth.login_confirm_param)) %>
+      <%= content_tag(:span, rodauth.field_error(rodauth.login_confirm_param), class: 'invalid-feedback', id: 'login-confirm_error_message') if rodauth.field_error(rodauth.login_confirm_param) %>
+    </div>
+  <% end %>
+  <% if rodauth.create_account_set_password? %>
+    <%= tag.div class: 'mb-4' do %>
+      <%= form.label rodauth.password_label, 'Пароль', class: 'form-label' %>
+      <%= form.password_field rodauth.password_param, value: '', id: 'password', autocomplete: rodauth.password_field_autocomplete_value, required: true, class: "form-control #{'is-invalid' if rodauth.field_error(rodauth.password_param)}", aria: ({ invalid: true, describedby: 'password_error_message' } if rodauth.field_error(rodauth.password_param)) %>
+      <%= content_tag(:span, rodauth.field_error(rodauth.password_param), class: 'invalid-feedback', id: 'password_error_message') if rodauth.field_error(rodauth.password_param) %>
+    <% end %>
+    <% if rodauth.require_password_confirmation? %>
+      <%= tag.div class: 'mb-4' do %>
+        <%= form.label rodauth.password_confirm_label, 'Подтвердить пароль', class: 'form-label' %>
+        <%= form.password_field rodauth.password_confirm_param, value: '', id: 'password-confirm', autocomplete: 'new-password', required: true, class: "form-control #{'is-invalid' if rodauth.field_error(rodauth.password_confirm_param)}", aria: ({ invalid: true, describedby: 'password-confirm_error_message' } if rodauth.field_error(rodauth.password_confirm_param)) %>
+        <%= content_tag(:span, rodauth.field_error(rodauth.password_confirm_param), class: 'invalid-feedback', id: 'password-confirm_error_message') if rodauth.field_error(rodauth.password_confirm_param) %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'mb-4' do %>
+    <%= form.submit rodauth.create_account_button, class: 'btn btn-primary w-100' %>
+  <% end %>
+<% end %>

@@ -1,0 +1,25 @@
+<%= tag.div class: 'card mb-4' do %>
+  <%= tag.div class: 'card-body' do %>
+    <%= tag.h1 @page_title, class: 'fs-base fw-semibold mb-3' %>
+    <%= yield %>
+  <% end %>
+<% end %>
+<% if request.path.start_with?('/logout') %>
+<% else %>
+  <%= tag.div class: 'card' do %>
+    <%= tag.div class: 'card-body' do %>
+      <%= tag.h4 'Дополнительно', class: 'fs-base fw-semibold mb-3' %>
+      <%= tag.div class: 'fw-normal' do %>
+        <% rodauth.login_form_footer_links.sort.each do |_, link, text| %>
+          <%= link_to link, class: 'card-nav-link text-truncate fw-semibold', title: text do %>
+            <%= tag.i class: 'uil uil-angle-right' %>
+            <%= tag.span class: 'ms-2' do %>
+              <%= text %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+<% parent_layout 'base' %>

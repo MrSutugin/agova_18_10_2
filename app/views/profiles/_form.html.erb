@@ -1,0 +1,33 @@
+<%= form_with(model: profile) do |form| %>
+  <%= tag.div class: 'card-body' do %>
+    <%= tag.h1 'Настройки профиля', class: 'h6 mb-3 fs-base fw-semibold' %>
+    <%= tag.div class: 'row' do %>
+      <%= tag.div class: 'col-xl-6' do %>
+        <%= tag.div class: 'mb-4' do %>
+          <%= form.label :first_name, 'Ваше имя', class: 'form-label' %>
+          <%= form.text_field :first_name, class: "form-control #{'is-invalid' if profile.errors.include?(:first_name)}" %>
+          <%= content_tag(:span, profile.errors.messages_for(:first_name).join, class: 'invalid-feedback_form') if profile.errors.include?(:first_name) %>
+        <% end %>
+      <% end %>
+      <%= tag.div class: 'col-xl-6' do %>
+        <%= tag.div class: 'mb-4' do %>
+          <%= form.label :last_name, 'Фамилия', class: 'form-label' %>
+          <%= form.text_field :last_name, class: "form-control #{'is-invalid' if profile.errors.include?(:last_name)}" %>
+          <%= content_tag(:span, profile.errors.messages_for(:last_name).join, class: 'invalid-feedback_form') if profile.errors.include?(:last_name) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'card-footer' do %>
+    <%= tag.ul class: 'nav nav-tabs w-100 mb-0' do %>
+      <%= tag.li class: 'nav-item w-100' do %>
+        <%= tag.button type:'subbmit', class: 'nav-link w-100 fw-semibold d-flex align-items-center justify-content-center fw-semibold' do %>
+          <%= tag.i class: 'uil uil-save fs-lg' %>
+          <%= tag.span class: 'ms-2 text-truncate' do %>
+            Сохранить
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

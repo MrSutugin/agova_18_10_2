@@ -1,0 +1,30 @@
+<%= tag.div class: 'card mb-4', id: "#{dom_id company}" do %>
+  <%= tag.div class: 'card-body' do %>
+    <%= tag.div class: 'account-status' do %>
+      <%= tag.div class: 'btn-group btn-group-sm' do %>
+        <%= tag.div class: 'btn-xs  btn-account d-flex align-items-center fw-semibold' do %>
+          <%= tag.i class: 'uil uil-star' %>
+          <%= tag.span class: 'ms-2 text-truncate' do %>
+            0.0
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%= tag.div class: 'd-flex align-items-center' do %>
+      <%= tag.div class: 'position-relative flex-shrink-0' do %>
+        <%= image_tag 'no_avatar', class: 'rounded-circle border', width: '100' %>
+      <% end %>
+      <%= tag.div class: 'ps-4 text-truncate' do %>
+        <%= tag.h1 class: 'h6 mb-0 fs-base fw-semibold' do %>
+          <%= company.name %>
+        <% end %>
+        <%= tag.div clas: 'd-flex align-items-center fw-semibold fs-sm' do %>
+          <%= tag.i class: 'uil uil-at' %>
+          <%= tag.span class: 'text-truncate' do %>
+            <%= company.slug %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
